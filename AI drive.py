@@ -9,8 +9,7 @@ def region_of_interest(img, vertices):
     # channel_count = img.shape[2]
     match_mask_color = 255
     cv2.fillPoly(mask, vertices, match_mask_color)
-    masked_image = cv2.bitwise_and(img, mask)
-    return masked_image
+    return cv2.bitwise_and(img, mask)
 
 
 def draw_the_lines(img, lines):
@@ -47,8 +46,7 @@ def process(image):
                             lines=np.array([]),
                             minLineLength=40,
                             maxLineGap=1)
-    image_with_lines = draw_the_lines(image, lines)
-    return image_with_lines
+    return draw_the_lines(image, lines)
 
 cap = cv2.VideoCapture('car_view.mp4')
 
